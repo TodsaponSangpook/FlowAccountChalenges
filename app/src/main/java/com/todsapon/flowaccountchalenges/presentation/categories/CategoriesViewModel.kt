@@ -1,5 +1,6 @@
 package com.todsapon.flowaccountchalenges.presentation.categories
 
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -25,7 +26,7 @@ class CategoriesViewModel(
     val onParentSizeIsEmpty: LiveData<Unit>
         get() = _onParentSizeIsEmpty
 
-    fun getCurrentCategory(index: Int? = null) {
+    fun getCurrentCategories(index: Int? = null) {
         index?.let {
             parentIndex.add(it)
         }
@@ -44,5 +45,16 @@ class CategoriesViewModel(
         } else {
             _onParentSizeIsEmpty.value = Unit
         }
+    }
+
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    fun setParentIndex(parentIndexList: List<Int>) {
+        parentIndex.clear()
+        parentIndex.addAll(parentIndexList)
+    }
+
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    fun clearParentIndex() {
+        parentIndex.clear()
     }
 }

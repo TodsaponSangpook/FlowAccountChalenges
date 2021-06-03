@@ -29,7 +29,7 @@ class CategoriesFragment : Fragment(R.layout.fragment_categories) {
         initView()
         observeViewModel()
 
-        categoriesViewModel.getCurrentCategory()
+        categoriesViewModel.getCurrentCategories()
         categoriesViewModel.getTotalOfCategories()
     }
 
@@ -54,6 +54,6 @@ class CategoriesFragment : Fragment(R.layout.fragment_categories) {
     }
 
     private val onItemClicked: (Int) -> Unit = { index ->
-        categoriesViewModel.getCurrentCategory(index)
+        categoriesViewModel.getCurrentCategories(index)
     }
 }

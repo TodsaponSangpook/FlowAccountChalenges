@@ -4,6 +4,7 @@ import com.todsapon.flowaccountchalenges.domain.usecase.GetCategoriesByParentUse
 import com.todsapon.flowaccountchalenges.domain.usecase.GetCategoriesByParentUseCaseImpl
 import com.todsapon.flowaccountchalenges.domain.usecase.GetCategoriesUseCase
 import com.todsapon.flowaccountchalenges.domain.usecase.GetCategoriesUseCaseImpl
+import com.todsapon.flowaccountchalenges.presentation.MainViewModel
 import com.todsapon.flowaccountchalenges.presentation.categories.CategoriesViewModel
 import com.todsapon.flowaccountchalenges.presentation.categories.list.CategoriesAdapter
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -29,5 +30,9 @@ val categoriesModule = module {
         CategoriesViewModel(
             getCategoriesByParentUseCase = get()
         )
+    }
+
+    viewModel {
+        MainViewModel()
     }
 }

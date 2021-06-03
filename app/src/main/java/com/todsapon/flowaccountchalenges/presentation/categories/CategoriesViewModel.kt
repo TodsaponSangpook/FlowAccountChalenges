@@ -23,4 +23,11 @@ class CategoriesViewModel(
 
         _currentCategories.value = getCategoriesByParentUseCase.execute(parentIndex)
     }
+
+    fun onBackClicked() {
+        if (parentIndex.size > 0) {
+            parentIndex.removeAt(parentIndex.lastIndex)
+            _currentCategories.value = getCategoriesByParentUseCase.execute(parentIndex)
+        }
+    }
 }

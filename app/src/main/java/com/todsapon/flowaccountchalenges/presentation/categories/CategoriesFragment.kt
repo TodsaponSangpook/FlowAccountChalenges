@@ -28,7 +28,9 @@ class CategoriesFragment : Fragment(R.layout.fragment_categories) {
 
         initView()
         observeViewModel()
+
         categoriesViewModel.getCurrentCategory()
+        categoriesViewModel.getTotalOfCategories()
     }
 
     private fun initView() {
@@ -38,6 +40,10 @@ class CategoriesFragment : Fragment(R.layout.fragment_categories) {
     private fun observeViewModel() {
         categoriesViewModel.currentCategories.observe(viewLifecycleOwner, Observer { categories ->
             categoriesAdapter.submitList(categories)
+        })
+        categoriesViewModel.totalOfCategories.observe(viewLifecycleOwner, Observer { totalOfCategories ->
+            val totalText = getString(R.string.total_of_categories) + totalOfCategories.toString()
+            binding.totalTextView.text = totalText
         })
         mainViewModel.onBack.observe(viewLifecycleOwner, Observer {
             categoriesViewModel.onBackClicked()

@@ -1,5 +1,4 @@
 <resources>
     <string name="app_name">FlowAccountChalenges</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="total_of_categories">Total of categories : </string>
 </resources>

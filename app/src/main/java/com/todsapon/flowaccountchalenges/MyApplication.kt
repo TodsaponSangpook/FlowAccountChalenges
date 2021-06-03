@@ -1,6 +1,7 @@
 package com.todsapon.flowaccountchalenges
 
 import android.app.Application
+import com.todsapon.flowaccountchalenges.di.categoriesModule
 import org.koin.core.context.startKoin
 
 class MyApplication : Application() {
@@ -9,7 +10,7 @@ class MyApplication : Application() {
         super.onCreate()
 
         startKoin {
-            modules()
+            modules(categoriesModule)
         }
     }
 }

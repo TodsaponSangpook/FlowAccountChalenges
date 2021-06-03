@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">FlowAccountChalenges</string>
-    <string name="total_of_categories">Total of categories : </string>
+    <string name="app_name">FlowAccountChallenges</string>
+    <string name="total_of_categories">Total of categories : %s </string>
 </resources>

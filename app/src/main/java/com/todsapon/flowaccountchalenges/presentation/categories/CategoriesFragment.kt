@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.todsapon.flowaccountchalenges.R
 import com.todsapon.flowaccountchalenges.databinding.FragmentCategoriesBinding
 import com.todsapon.flowaccountchalenges.extension.viewBinding
@@ -34,6 +35,9 @@ class CategoriesFragment : Fragment(R.layout.fragment_categories) {
     }
 
     private fun initView() {
+        val dividerItemDecoration =
+            DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL)
+        binding.categoriesRecyclerView.addItemDecoration(dividerItemDecoration)
         binding.categoriesRecyclerView.adapter = categoriesAdapter
     }
 
@@ -41,13 +45,20 @@ class CategoriesFragment : Fragment(R.layout.fragment_categories) {
         categoriesViewModel.currentCategories.observe(viewLifecycleOwner, Observer { categories ->
             categoriesAdapter.submitList(categories)
         })
-        categoriesViewModel.totalOfCategories.observe(viewLifecycleOwner, Observer { totalOfCategories ->
-            val totalText = getString(R.string.total_of_categories) + totalOfCategories.toString()
-            binding.totalTextView.text = totalText
-        })
-        categoriesViewModel.onParentSizeIsEmpty.observe(viewLifecycleOwner, Observer { totalOfCategories ->
-            mainViewModel.onCloseApp()
-        })
+
+        categoriesViewModel.totalOfCategories.observe(
+            viewLifecycleOwner,
+            Observer { totalOfCategories ->
+                val totalText = getString(R.string.total_of_categories, totalOfCategories.toString())
+                binding.totalTextView.text = totalText
+            })
+
+        categoriesViewModel.onParentSizeIsEmpty.observe(
+            viewLifecycleOwner,
+            Observer {
+                mainViewModel.onCloseApp()
+            })
+
         mainViewModel.onBack.observe(viewLifecycleOwner, Observer {
             categoriesViewModel.onBackClicked()
         })

@@ -1,6 +1,7 @@
 package com.todsapon.flowaccountchalenges.presentation.categories.list
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.todsapon.flowaccountchalenges.databinding.ItemCategoriesBinding
@@ -24,6 +25,13 @@ class CategoriesViewHolder(
 
     fun bind(data: Category, index: Int) {
         binding.categoryNameTextView.text = data.name
+
+        if (data.children == null) {
+            binding.arrowImageView.visibility = View.GONE
+        } else {
+            binding.arrowImageView.visibility = View.VISIBLE
+        }
+
         itemView.setOnClickListener {
             data.children?.let {
                 onItemClicked.invoke(index)

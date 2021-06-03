@@ -21,6 +21,10 @@ class CategoriesViewModel(
     val totalOfCategories: LiveData<Int>
         get() = _totalOfCategories
 
+    private val _onParentSizeIsEmpty = MutableLiveData<Unit>()
+    val onParentSizeIsEmpty: LiveData<Unit>
+        get() = _onParentSizeIsEmpty
+
     fun getCurrentCategory(index: Int? = null) {
         index?.let {
             parentIndex.add(it)
@@ -37,6 +41,8 @@ class CategoriesViewModel(
         if (parentIndex.size > 0) {
             parentIndex.removeAt(parentIndex.lastIndex)
             _currentCategories.value = getCategoriesByParentUseCase.execute(parentIndex)
+        } else {
+            _onParentSizeIsEmpty.value = Unit
         }
     }
 }

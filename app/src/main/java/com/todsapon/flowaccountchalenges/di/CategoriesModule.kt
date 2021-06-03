@@ -1,5 +1,7 @@
 package com.todsapon.flowaccountchalenges.di
 
+import com.todsapon.flowaccountchalenges.domain.usecase.GetCategoriesByParentUseCase
+import com.todsapon.flowaccountchalenges.domain.usecase.GetCategoriesByParentUseCaseImpl
 import com.todsapon.flowaccountchalenges.domain.usecase.GetCategoriesUseCase
 import com.todsapon.flowaccountchalenges.domain.usecase.GetCategoriesUseCaseImpl
 import com.todsapon.flowaccountchalenges.presentation.categories.CategoriesViewModel
@@ -13,13 +15,19 @@ val categoriesModule = module {
         GetCategoriesUseCaseImpl()
     }
 
+    factory<GetCategoriesByParentUseCase> {
+        GetCategoriesByParentUseCaseImpl(
+            getCategoriesUseCase = get()
+        )
+    }
+
     factory<CategoriesAdapter> { (onItemClicked: (index: Int) -> Unit) ->
         CategoriesAdapter(onItemClicked)
     }
 
     viewModel {
         CategoriesViewModel(
-            getCategoriesUseCase = get()
+            getCategoriesByParentUseCase = get()
         )
     }
 }

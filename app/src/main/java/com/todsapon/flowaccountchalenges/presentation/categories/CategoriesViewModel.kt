@@ -4,17 +4,23 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.todsapon.flowaccountchalenges.domain.model.Category
-import com.todsapon.flowaccountchalenges.domain.usecase.GetCategoriesUseCase
+import com.todsapon.flowaccountchalenges.domain.usecase.GetCategoriesByParentUseCase
 
 class CategoriesViewModel(
-    val getCategoriesUseCase: GetCategoriesUseCase
+    private val getCategoriesByParentUseCase: GetCategoriesByParentUseCase
 ) : ViewModel() {
 
     private val _currentCategories = MutableLiveData<List<Category>>()
     val currentCategories: LiveData<List<Category>>
         get() = _currentCategories
 
-    fun getCurrentCategory() {
-        _currentCategories.value = getCategoriesUseCase.execute()
+    private val parentIndex = arrayListOf<Int>()
+
+    fun getCurrentCategory(index: Int? = null) {
+        index?.let {
+            parentIndex.add(it)
+        }
+
+        _currentCategories.value = getCategoriesByParentUseCase.execute(parentIndex)
     }
 }

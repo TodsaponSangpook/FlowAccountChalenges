@@ -32,16 +32,6 @@ class GetCategoriesUseCaseImpl : GetCategoriesUseCase {
                         Category().apply {
                             this.id = 31
                             this.name = "After work party"
-                            this.children = listOf(
-                                Category().apply {
-                                    this.id = 41
-                                    this.name = "41"
-                                },
-                                Category().apply {
-                                    this.id = 42
-                                    this.name = "42"
-                                }
-                            )
                         },
                     )
                 }

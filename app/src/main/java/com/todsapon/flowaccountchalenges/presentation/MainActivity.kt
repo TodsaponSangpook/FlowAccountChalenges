@@ -1,7 +1,8 @@
-package com.todsapon.flowaccountchalenges
+package com.todsapon.flowaccountchalenges.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.todsapon.flowaccountchalenges.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

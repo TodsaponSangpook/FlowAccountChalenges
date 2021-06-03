@@ -35,8 +35,7 @@ class CategoriesFragment : Fragment(R.layout.fragment_categories) {
     }
 
     private fun initView() {
-        val dividerItemDecoration =
-            DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL)
+        val dividerItemDecoration = DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL)
         binding.categoriesRecyclerView.addItemDecoration(dividerItemDecoration)
         binding.categoriesRecyclerView.adapter = categoriesAdapter
     }
@@ -46,18 +45,14 @@ class CategoriesFragment : Fragment(R.layout.fragment_categories) {
             categoriesAdapter.submitList(categories)
         })
 
-        categoriesViewModel.totalOfCategories.observe(
-            viewLifecycleOwner,
-            Observer { totalOfCategories ->
-                val totalText = getString(R.string.total_of_categories, totalOfCategories.toString())
-                binding.totalTextView.text = totalText
-            })
+        categoriesViewModel.totalOfCategories.observe(viewLifecycleOwner, Observer { totalOfCategories ->
+            val totalText = getString(R.string.total_of_categories, totalOfCategories.toString())
+            binding.totalTextView.text = totalText
+        })
 
-        categoriesViewModel.onParentSizeIsEmpty.observe(
-            viewLifecycleOwner,
-            Observer {
-                mainViewModel.onCloseApp()
-            })
+        categoriesViewModel.onParentSizeIsEmpty.observe(viewLifecycleOwner, Observer {
+            mainViewModel.onCloseApp()
+        })
 
         mainViewModel.onBack.observe(viewLifecycleOwner, Observer {
             categoriesViewModel.onBackClicked()

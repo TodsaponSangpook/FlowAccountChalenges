@@ -17,8 +17,7 @@ class CategoriesViewHolder(
             parent: ViewGroup,
             onItemClicked: (Int) -> Unit
         ): CategoriesViewHolder {
-            val view =
-                ItemCategoriesBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            val view = ItemCategoriesBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             return CategoriesViewHolder(view, onItemClicked)
         }
     }

@@ -14,7 +14,7 @@ class MainViewModel : ViewModel() {
     val onClose: LiveData<Unit>
         get() = _onClose
 
-    fun onBlackClicked() {
+    fun onBackClicked() {
         _onBack.value = Unit
     }
 

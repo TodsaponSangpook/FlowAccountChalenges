@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        mainViewModel.onBlackClicked()
+        mainViewModel.onBackClicked()
     }
 
     private fun observeViewModel() {

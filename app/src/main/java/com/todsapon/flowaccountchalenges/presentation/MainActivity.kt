@@ -1,13 +1,15 @@
 package com.todsapon.flowaccountchalenges.presentation
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import com.todsapon.flowaccountchalenges.R
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-    private val mainViewModel: MainViewModel by viewModel()
+
+    private val mainViewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,8 +23,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun observeViewModel() {
-        mainViewModel.onClose.observe(this, Observer {
+        mainViewModel.onClose.observe(this) {
             super.onBackPressed()
-        })
+        }
     }
 }

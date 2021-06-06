@@ -4,10 +4,16 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.todsapon.flowaccountchalenges.domain.model.Category
+import javax.inject.Inject
 
-class CategoriesAdapter(
-    private val onItemClicked: (Int) -> Unit
-) : ListAdapter<Category, CategoriesViewHolder>(CategoriesDiffCallBack()) {
+class CategoriesAdapter @Inject constructor() :
+    ListAdapter<Category, CategoriesViewHolder>(CategoriesDiffCallBack()) {
+
+    private var onItemClicked: ((Int) -> Unit)? = null
+
+    fun setItemClick(onItemClicked: (Int) -> Unit) {
+        this.onItemClicked = onItemClicked
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoriesViewHolder {
         return CategoriesViewHolder.from(parent, onItemClicked)

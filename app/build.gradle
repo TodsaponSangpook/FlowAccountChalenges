@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -52,8 +54,13 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.3.1"
 
-    implementation "org.koin:koin-android:$koin_version"
-    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+    // Koin dependencies
+    //implementation "org.koin:koin-android:$koin_version"
+    //implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+
+    // Hilt dependencies
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.1")
     testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0")

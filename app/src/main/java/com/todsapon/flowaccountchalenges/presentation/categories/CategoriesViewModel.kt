@@ -7,8 +7,11 @@ import androidx.lifecycle.ViewModel
 import com.todsapon.flowaccountchalenges.domain.model.Category
 import com.todsapon.flowaccountchalenges.domain.usecase.GetCategoriesByParentUseCase
 import com.todsapon.flowaccountchalenges.domain.usecase.GetTotalOfCategoriesUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class CategoriesViewModel(
+@HiltViewModel
+class CategoriesViewModel @Inject constructor(
     private val getCategoriesByParentUseCase: GetCategoriesByParentUseCase,
     private val getTotalOfCategoriesUseCase: GetTotalOfCategoriesUseCase
 ) : ViewModel() {

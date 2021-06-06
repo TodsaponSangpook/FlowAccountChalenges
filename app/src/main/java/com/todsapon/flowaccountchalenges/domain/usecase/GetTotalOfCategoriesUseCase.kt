@@ -1,12 +1,13 @@
 package com.todsapon.flowaccountchalenges.domain.usecase
 
 import com.todsapon.flowaccountchalenges.domain.model.Category
+import javax.inject.Inject
 
 interface GetTotalOfCategoriesUseCase {
     fun execute(): Int
 }
 
-class GetTotalOfCategoriesUseCaseImpl(
+class GetTotalOfCategoriesUseCaseImpl @Inject constructor(
     private val getCategoriesUseCase: GetCategoriesUseCase
 ) : GetTotalOfCategoriesUseCase {
 

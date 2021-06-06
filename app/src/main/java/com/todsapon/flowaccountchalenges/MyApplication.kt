@@ -1,16 +1,7 @@
 package com.todsapon.flowaccountchalenges
 
 import android.app.Application
-import com.todsapon.flowaccountchalenges.di.categoriesModule
-import org.koin.core.context.startKoin
+import dagger.hilt.android.HiltAndroidApp
 
-class MyApplication : Application() {
-
-    override fun onCreate() {
-        super.onCreate()
-
-        startKoin {
-            modules(categoriesModule)
-        }
-    }
-}
+@HiltAndroidApp
+class MyApplication : Application()

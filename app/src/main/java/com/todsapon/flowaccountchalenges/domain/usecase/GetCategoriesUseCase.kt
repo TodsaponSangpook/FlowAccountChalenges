@@ -1,12 +1,13 @@
 package com.todsapon.flowaccountchalenges.domain.usecase
 
 import com.todsapon.flowaccountchalenges.domain.model.Category
+import javax.inject.Inject
 
 interface GetCategoriesUseCase {
     fun execute(): List<Category>
 }
 
-class GetCategoriesUseCaseImpl : GetCategoriesUseCase {
+class GetCategoriesUseCaseImpl @Inject constructor() : GetCategoriesUseCase {
 
     override fun execute(): List<Category> {
         return listOf(Category().apply {

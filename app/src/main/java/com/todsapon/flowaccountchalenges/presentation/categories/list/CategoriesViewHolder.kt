@@ -9,15 +9,16 @@ import com.todsapon.flowaccountchalenges.domain.model.Category
 
 class CategoriesViewHolder(
     private val binding: ItemCategoriesBinding,
-    private val onItemClicked: (Int) -> Unit
+    private val onItemClicked: ((Int) -> Unit)?
 ) : RecyclerView.ViewHolder(binding.root) {
 
     companion object {
         fun from(
             parent: ViewGroup,
-            onItemClicked: (Int) -> Unit
+            onItemClicked: ((Int) -> Unit)?
         ): CategoriesViewHolder {
-            val view = ItemCategoriesBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            val view =
+                ItemCategoriesBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             return CategoriesViewHolder(view, onItemClicked)
         }
     }
@@ -33,7 +34,7 @@ class CategoriesViewHolder(
 
         itemView.setOnClickListener {
             data.children?.let {
-                onItemClicked.invoke(index)
+                onItemClicked?.invoke(index)
             }
         }
     }
